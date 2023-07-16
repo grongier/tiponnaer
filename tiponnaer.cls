@@ -34,6 +34,7 @@
 \DeclareOption{transitional}{\renewcommand\@style{transitional}} 
 \DeclareOption{oldstyle}{\renewcommand\@style{oldstyle}}
 \DeclareOption{magazine}{\renewcommand\@style{magazine}}
+\DeclareOption{readability}{\renewcommand\@style{readability}}
 \ExecuteOptions{transitional}
 % KOMA script options for the scrartcl class. 
 % DIV defines the margin size. With calc, it is computed automatically depending
@@ -107,7 +108,7 @@
 % To enhance lists.
 \RequirePackage{enumitem}
 % To reverse the numbering of lists.
-\usepackage{etaremune}
+\RequirePackage{etaremune}
 % To balance the columns of the last page.
 \RequirePackage[checkfootnote,checkfloat]{flushend}
 % To add hyphenation with dash linked words.
@@ -139,6 +140,8 @@
         \newcommand{\stylizesubsection}[1]{\normalsize \schoolbook #1}
         \newcommand{\stylizesubsubsection}[1]{\small \schoolbook #1}
         \newcommand{\stylizeparagraph}[1]{\small \schoolbook #1}
+        % Sans-serif font
+        \setsansfont{sourcesanspro}
     }{
         \ifthenelse{\equal{\@style}{magazine}}{
             % Serif body font
@@ -151,21 +154,38 @@
             \newcommand{\stylizesubsection}[1]{\normalsize \franklin \mdseries \MakeUppercase{#1}}
             \newcommand{\stylizesubsubsection}[1]{\footnotesize \franklin \mdseries \MakeUppercase{#1}}
             \newcommand{\stylizeparagraph}[1]{\footnotesize \franklin \mdseries \MakeUppercase{#1}}
+            % Sans-serif font
+            \setsansfont{sourcesanspro}
         }{
-            % Serif body font
-            \setmainfont{XCharter}
-            % Title fonts
-            \newfontfamily\franklin{LibreFranklin}
-            \newcommand{\stylizetitle}[1]{\huge \franklin \bfseries #1}
-            \newcommand{\stylizeabstract}[1]{\small \franklin \bfseries #1}
-            \newcommand{\stylizesection}[1]{\large \franklin \bfseries #1}
-            \newcommand{\stylizesubsection}[1]{\normalsize \franklin \bfseries #1}
-            \newcommand{\stylizesubsubsection}[1]{\small \franklin \bfseries #1}
-            \newcommand{\stylizeparagraph}[1]{\small \franklin \bfseries #1}
+            \ifthenelse{\equal{\@style}{readability}}{
+                % Serif body font
+                \setmainfont{ebgaramond}
+                % Title fonts
+                \newfontfamily\franklin{LibreFranklin}
+                \newcommand{\stylizetitle}[1]{\LARGE \franklin \MakeUppercase{#1}}
+                \newcommand{\stylizeabstract}[1]{\footnotesize \franklin \MakeUppercase{#1}}
+                \newcommand{\stylizesection}[1]{\large \franklin \mdseries \MakeUppercase{#1}}
+                \newcommand{\stylizesubsection}[1]{\normalsize \franklin \mdseries \MakeUppercase{#1}}
+                \newcommand{\stylizesubsubsection}[1]{\footnotesize \franklin \mdseries \MakeUppercase{#1}}
+                \newcommand{\stylizeparagraph}[1]{\footnotesize \franklin \mdseries \MakeUppercase{#1}}
+                % Sans-serif font
+                \setsansfont{LibreFranklin}
+            }{
+                % Serif body font
+                \setmainfont{XCharter}
+                % Title fonts
+                \newfontfamily\franklin{LibreFranklin}
+                \newcommand{\stylizetitle}[1]{\huge \franklin \bfseries #1}
+                \newcommand{\stylizeabstract}[1]{\small \franklin \bfseries #1}
+                \newcommand{\stylizesection}[1]{\large \franklin \bfseries #1}
+                \newcommand{\stylizesubsection}[1]{\normalsize \franklin \bfseries #1}
+                \newcommand{\stylizesubsubsection}[1]{\small \franklin \bfseries #1}
+                \newcommand{\stylizeparagraph}[1]{\small \franklin \bfseries #1}
+                % Sans-serif font
+                \setsansfont{sourcesanspro}
+            }%
         }%
     }%
-    % Sans-serif font
-    \setsansfont{sourcesanspro}
     % Monospaced font
     \setmonofont{sourcecodepro}
 \else
@@ -184,24 +204,41 @@
         \newcommand{\stylizetitle}[1]{\huge \fontfamily{qbk}\selectfont \itshape \MakeUppercase{#1}}
         \newcommand{\stylizeabstract}[1]{\small \fontfamily{TeXGyreScholaX-TLF}\selectfont \bfseries #1}
         \newcommand{\stylizesection}[1]{\large \fontfamily{TeXGyreScholaX-TLF}\selectfont #1}
-        \newcommand{\stylizesubsection}[1]{\normalsize \fontfamily{TeXGyreScholaX-TLF}\selectfont \bfseries #1}
-        \newcommand{\stylizesubsubsection}[1]{\small \fontfamily{TeXGyreScholaX-TLF}\selectfont \bfseries #1}
-        \newcommand{\stylizeparagraph}[1]{\small \fontfamily{TeXGyreScholaX-TLF}\selectfont \bfseries #1}
+        \newcommand{\stylizesubsection}[1]{\normalsize \fontfamily{TeXGyreScholaX-TLF}\selectfont #1}
+        \newcommand{\stylizesubsubsection}[1]{\small \fontfamily{TeXGyreScholaX-TLF}\selectfont #1}
+        \newcommand{\stylizeparagraph}[1]{\small \fontfamily{TeXGyreScholaX-TLF}\selectfont #1}
+        % Sans-serif font
+        \RequirePackage{sourcesanspro}
     }{
-        % Serif body font
-        \RequirePackage{XCharter}
-        % Math font
-        \RequirePackage[charter, expert]{mathdesign}
-        % Title fonts
-        \newcommand{\stylizetitle}[1]{\huge \fontfamily{LibreFranklin-TLF}\selectfont \bfseries #1}
-        \newcommand{\stylizeabstract}[1]{\small \fontfamily{LibreFranklin-TLF}\selectfont \bfseries #1}
-        \newcommand{\stylizesection}[1]{\large \fontfamily{LibreFranklin-TLF}\selectfont \bfseries #1}
-        \newcommand{\stylizesubsection}[1]{\normalsize \fontfamily{LibreFranklin-TLF}\selectfont \bfseries #1}
-        \newcommand{\stylizesubsubsection}[1]{\small \fontfamily{LibreFranklin-TLF}\selectfont \bfseries #1}
-        \newcommand{\stylizeparagraph}[1]{\small \fontfamily{LibreFranklin-TLF}\selectfont \bfseries #1}
+        \ifthenelse{\equal{\@style}{readability}}{
+            % Serif body font
+            \RequirePackage[cmintegrals,cmbraces]{newtxmath}
+            \RequirePackage{ebgaramond-maths}
+            % Title fonts
+            \newcommand{\stylizetitle}[1]{\LARGE \fontfamily{LibreFranklin-TLF}\selectfont \MakeUppercase{#1}}
+            \newcommand{\stylizeabstract}[1]{\footnotesize \fontfamily{LibreFranklin-TLF}\selectfont \MakeUppercase{#1}}
+            \newcommand{\stylizesection}[1]{\large \fontfamily{LibreFranklin-TLF}\selectfont \mdseries \MakeUppercase{#1}}
+            \newcommand{\stylizesubsection}[1]{\normalsize \fontfamily{LibreFranklin-TLF}\selectfont \mdseries \MakeUppercase{#1}}
+            \newcommand{\stylizesubsubsection}[1]{\footnotesize \fontfamily{LibreFranklin-TLF}\selectfont \mdseries \MakeUppercase{#1}}
+            \newcommand{\stylizeparagraph}[1]{\footnotesize \fontfamily{LibreFranklin-TLF}\selectfont \mdseries \MakeUppercase{#1}}
+            % Sans-serif font
+            \RequirePackage{librefranklin}
+        }{
+            % Serif body font
+            \RequirePackage{XCharter}
+            % Math font
+            \RequirePackage[charter, expert]{mathdesign}
+            % Title fonts
+            \newcommand{\stylizetitle}[1]{\huge \fontfamily{LibreFranklin-TLF}\selectfont \bfseries #1}
+            \newcommand{\stylizeabstract}[1]{\small \fontfamily{LibreFranklin-TLF}\selectfont \bfseries #1}
+            \newcommand{\stylizesection}[1]{\large \fontfamily{LibreFranklin-TLF}\selectfont \bfseries #1}
+            \newcommand{\stylizesubsection}[1]{\normalsize \fontfamily{LibreFranklin-TLF}\selectfont \bfseries #1}
+            \newcommand{\stylizesubsubsection}[1]{\small \fontfamily{LibreFranklin-TLF}\selectfont \bfseries #1}
+            \newcommand{\stylizeparagraph}[1]{\small \fontfamily{LibreFranklin-TLF}\selectfont \bfseries #1}
+            % Sans-serif font
+            \RequirePackage{sourcesanspro}
+        }%
     }%
-    % Sans-serif font
-    \RequirePackage{sourcesanspro}
     % Monospaced font
     \RequirePackage{sourcecodepro}
 \fi
