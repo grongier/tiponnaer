@@ -34,7 +34,7 @@
 \DeclareOption{transitional}{\renewcommand\@style{transitional}} 
 \DeclareOption{oldstyle}{\renewcommand\@style{oldstyle}}
 \DeclareOption{magazine}{\renewcommand\@style{magazine}}
-\DeclareOption{readability}{\renewcommand\@style{readability}}
+\DeclareOption{traditional}{\renewcommand\@style{traditional}}
 \ExecuteOptions{transitional}
 % KOMA script options for the scrartcl class. 
 % DIV defines the margin size. With calc, it is computed automatically depending
@@ -157,17 +157,17 @@
             % Sans-serif font
             \setsansfont{sourcesanspro}
         }{
-            \ifthenelse{\equal{\@style}{readability}}{
+            \ifthenelse{\equal{\@style}{traditional}}{
                 % Serif body font
                 \setmainfont{ebgaramond}
                 % Title fonts
                 \newfontfamily\franklin{LibreFranklin}
-                \newcommand{\stylizetitle}[1]{\LARGE \franklin \MakeUppercase{#1}}
-                \newcommand{\stylizeabstract}[1]{\footnotesize \franklin \MakeUppercase{#1}}
-                \newcommand{\stylizesection}[1]{\large \franklin \mdseries \MakeUppercase{#1}}
-                \newcommand{\stylizesubsection}[1]{\normalsize \franklin \mdseries \MakeUppercase{#1}}
-                \newcommand{\stylizesubsubsection}[1]{\footnotesize \franklin \mdseries \MakeUppercase{#1}}
-                \newcommand{\stylizeparagraph}[1]{\footnotesize \franklin \mdseries \MakeUppercase{#1}}
+                \newcommand{\stylizetitle}[1]{\LARGE \franklin \bfseries \MakeUppercase{#1}}
+                \newcommand{\stylizeabstract}[1]{\footnotesize \franklin \bfseries \MakeUppercase{#1}}
+                \newcommand{\stylizesection}[1]{\large \franklin \bfseries \MakeUppercase{#1}}
+                \newcommand{\stylizesubsection}[1]{\normalsize \franklin \bfseries \MakeUppercase{#1}}
+                \newcommand{\stylizesubsubsection}[1]{\footnotesize \franklin \bfseries \MakeUppercase{#1}}
+                \newcommand{\stylizeparagraph}[1]{\footnotesize \franklin \bfseries \MakeUppercase{#1}}
                 % Sans-serif font
                 \setsansfont{LibreFranklin}
             }{
@@ -210,17 +210,17 @@
         % Sans-serif font
         \RequirePackage{sourcesanspro}
     }{
-        \ifthenelse{\equal{\@style}{readability}}{
+        \ifthenelse{\equal{\@style}{traditional}}{
             % Serif body font
             \RequirePackage[cmintegrals,cmbraces]{newtxmath}
             \RequirePackage{ebgaramond-maths}
             % Title fonts
-            \newcommand{\stylizetitle}[1]{\LARGE \fontfamily{LibreFranklin-TLF}\selectfont \MakeUppercase{#1}}
-            \newcommand{\stylizeabstract}[1]{\footnotesize \fontfamily{LibreFranklin-TLF}\selectfont \MakeUppercase{#1}}
-            \newcommand{\stylizesection}[1]{\large \fontfamily{LibreFranklin-TLF}\selectfont \mdseries \MakeUppercase{#1}}
-            \newcommand{\stylizesubsection}[1]{\normalsize \fontfamily{LibreFranklin-TLF}\selectfont \mdseries \MakeUppercase{#1}}
-            \newcommand{\stylizesubsubsection}[1]{\footnotesize \fontfamily{LibreFranklin-TLF}\selectfont \mdseries \MakeUppercase{#1}}
-            \newcommand{\stylizeparagraph}[1]{\footnotesize \fontfamily{LibreFranklin-TLF}\selectfont \mdseries \MakeUppercase{#1}}
+            \newcommand{\stylizetitle}[1]{\LARGE \fontfamily{LibreFranklin-TLF}\selectfont \bfseries \MakeUppercase{#1}}
+            \newcommand{\stylizeabstract}[1]{\footnotesize \fontfamily{LibreFranklin-TLF}\selectfont \bfseries \MakeUppercase{#1}}
+            \newcommand{\stylizesection}[1]{\large \fontfamily{LibreFranklin-TLF}\selectfont \bfseries \MakeUppercase{#1}}
+            \newcommand{\stylizesubsection}[1]{\normalsize \fontfamily{LibreFranklin-TLF}\selectfont \bfseries \MakeUppercase{#1}}
+            \newcommand{\stylizesubsubsection}[1]{\footnotesize \fontfamily{LibreFranklin-TLF}\selectfont \bfseries \MakeUppercase{#1}}
+            \newcommand{\stylizeparagraph}[1]{\footnotesize \fontfamily{LibreFranklin-TLF}\selectfont \bfseries \MakeUppercase{#1}}
             % Sans-serif font
             \RequirePackage{librefranklin}
         }{
