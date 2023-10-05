@@ -13,7 +13,7 @@ tiponnaer is a LaTeX class to give scientific articles a nice formatting (at lea
  tiponnaer also defines a set of commands to add highlights, abstract, keywords, journal, volume, number, pages, year, and DOI. Three extra commands are:
   * `\License{...}` to explicitly mention the document's license.
   * `\Disclaimer` to add a disclaimer if the document hasn't been peer-reviewed (if it's a preprint for instance).
-  * `\FullText{...}` to add a link to a full-text, freely available version of the document.
+  * `\FullText{...}` to add a link to a freely available, full-text version of the document.
 
 You'll find two examples showing how to use tiponnaer:
  * [example_article](example_article.tex) shows how to format an article published in a journal and add a CC BY license to the document.
