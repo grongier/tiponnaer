@@ -17,4 +17,4 @@ tiponnaer is a LaTeX class to give scientific articles a nice formatting (at lea
 
 You'll find two examples showing how to use tiponnaer:
  * [example_article](example_article.tex) shows how to format an article published in a journal and add a CC BY license to the document.
- * [example_abstract](example_abstract.tex) shows how to format an abstract for an article published in a journal. It also shows how to use a single-column format (default is two columns).
+ * [example_abstract](example_abstract.tex) shows how to format an abstract for an article published in a journal. It also shows how to switch to a single-column format (default is two columns).

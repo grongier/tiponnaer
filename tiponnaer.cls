@@ -21,10 +21,11 @@
 % SOFTWARE.
 
 
+% tiponnaer (se): se pomponner en normand
+
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{tiponnaer}
-
-% tiponnaer (se): se pomponner en normand
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
