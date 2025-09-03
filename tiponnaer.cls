@@ -289,8 +289,8 @@
 \renewcommand*{\backref}[1]{}
 \renewcommand*{\backrefalt}[4]{%
     \ifcase #1 \mapolicebackref{(Not cited)}
-        \or \mapolicebackref{(Cited page #2)}
-        \else \mapolicebackref{(Cited pages #2)}
+        \or \mapolicebackref{(Cited on page #2)}
+        \else \mapolicebackref{(Cited on pages #2)}
     \fi
 }
 
