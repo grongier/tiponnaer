@@ -67,8 +67,6 @@
 \RequirePackage{scrlayer-scrpage}
 % To add an appendix environment and add appendix in the toc.
 \RequirePackage[title]{appendix}
-% To add a bibliography.
-\RequirePackage{natbib}
 
 % FLOATS
 % To insert figures.
@@ -100,11 +98,9 @@
 % To generate English ordinal numbers with \nth{number}.
 \RequirePackage[super]{nth}
 % To add and highlight links in the text (load at the end).
-% With natbib.
 \RequirePackage[
     % pdfpagelayout=TwoPageRight,
     plainpages=false,
-    backref=page
 ]{hyperref}
 % To enhance lists.
 \RequirePackage{enumitem}
@@ -280,19 +276,6 @@
 \setkomafont{subsubsection}{\stylizesubsubsection}
 % Modifies the paragraph titles.
 \setkomafont{paragraph}{\stylizeparagraph}
-% Text size for the bibliography. Needs the natbib package.
-\def\bibfont{\small}
-\setlength{\bibsep}{0.15em plus 0.05em}
-% Defines a style for the backref. Needs the natbib and hyperref packages.
-\newcommand{\mapolicebackref}[1]{\mbox{\textit {#1}}}
-% Handles the backref in the bibliography. Needs the natbib and hyperref packages.
-\renewcommand*{\backref}[1]{}
-\renewcommand*{\backrefalt}[4]{%
-    \ifcase #1 \mapolicebackref{(Not cited)}
-        \or \mapolicebackref{(Cited on page #2)}
-        \else \mapolicebackref{(Cited on pages #2)}
-    \fi
-}
 
 % FLOATS
 % Enlarges space between columns in tables.
@@ -300,7 +283,7 @@
 % Enlarges the space between table rows. Need the booktabs package.
 \renewcommand{\arraystretch}{1.2}
 % Source of floats
-\newcommand{\source}[1]{\vspace{-0.85em}\caption*{\footnotesize \hfill #1}}
+\newcommand{\source}[1]{\vspace{0.75ex}{\footnotesize \hfill #1}}
 
 % TEXT ENHANCEMENT
 % Needs the hyperref and color package.
@@ -312,6 +295,51 @@
     linkcolor         = colorlink, % Color of internal links
     citecolor         = colorlink  % Color of citations
 }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography
+
+% To add a bibliography. Needs to be loaded after polyglossia.
+\RequirePackage[
+    backend=biber,
+    style=apa,
+    sortcites=ynt,
+    sorting=nyt,
+    alldates=year,
+    isbn=true,
+    backref=true,
+]{biblatex}
+% To cut URLs properly.
+\RequirePackage{xurl}
+
+% Text size for the bibliography. Needs the biblatex package.
+\renewcommand*{\bibfont}{\normalfont\small}
+% Reduces the hanging space. Needs the biblatex package.
+\setlength{\bibhang}{1.5em}
+% Defines a style for the backref. Needs the biblatex package.
+\DefineBibliographyStrings{english}{%
+    backrefpage={cited on page},
+    backrefpages={cited on pages},
+}
+
+% Uses annotations as URL (for bills). Needs the biblatex package.
+\DeclareFieldFormat{annotation}{%
+    \href{#1}{\faExternalLinkSquare*~\texttt{\url{#1}}}}
+\renewbibmacro*{pageref}{%
+    \iffieldundef{annotation}
+        {}
+        {\setunit{\addspace}\printfield{annotation}}%
+    \iflistundef{pageref}
+        {}
+        {\setunit{\addspace}%
+            \printtext[parens]{\ifnumgreater{\value{pageref}}{1}
+                {cited on pages~}
+                {cited on page~}%
+            \printlist{pageref}}}}
+
+% To break URLs properly.
+\def\UrlBreaks{\do\/\do-\do\_}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -370,7 +398,7 @@
     \end{minipage}%
 }}
 \newcommand{\FullText}[1]{\def\artfulltext{%
-	\textbf{Full text freely available at:}  \href{#1}{#1}%
+    \textbf{Full text freely available at:}  \href{#1}{#1}%
 }}
 \newcommand{\Disclaimer}{\def\artdisclaimer{%
     \textbf{This article is a non-peer-reviewed preprint}%
@@ -506,8 +534,6 @@
 
 % ARTICLE STRUCTURE
 \date{}
-% Needs the natbib package.
-\bibliographystyle{abbrvnat}
 
 % FLOATS
 % Needs the graphicx package.

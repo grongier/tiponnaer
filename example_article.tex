@@ -3,6 +3,8 @@
 \usepackage{lipsum}
 
 
+\addbibresource{example_article.bib}
+
 \title{\LaTeX{} template for a research article}
 \author[1,2]{First {\scshape Author}}
 \author[1]{Second {\scshape Author}}
@@ -69,7 +71,7 @@
 	\centering
 	\includegraphics[width=\linewidth]{example-image-a} 
 	\caption{\lipsum[1][1-2]}
-    \source{Modified from \citet{Tolkien1954}}
+    \source{Modified from \textcite{Tolkien1954}}
 	\label{fig:figure_1}
 \end{figure}
 
@@ -109,7 +111,11 @@
 \section*{Acknowledgments}
 
 	\lipsum[1]
-	
+
+\FloatBarrier
+
+\printbibliography
+
 \begin{appendices}
 
 \counterwithin{figure}{section}
@@ -129,9 +135,5 @@
 	\lipsum[2-4]
 	
 \end{appendices}
-
-\FloatBarrier
-
-\bibliography{example_article}
 
 \end{document}
