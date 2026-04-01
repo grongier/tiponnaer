@@ -81,6 +81,8 @@
 \RequirePackage{multirow}
 % To align numbers in a column on the decimal point.
 \RequirePackage{dcolumn}
+% To insert nicer tables.
+\RequirePackage{tabularray}
 % To define the figure and table captions.
 \RequirePackage[
     format=plain,
@@ -514,7 +516,7 @@
     {\centering%
         {\let \footnote \thanks}%
         {\stylizetitle{\@title} \par}%
-        {\vskip 1.75em \@author \par}%
+        \ifnum\value{authors}>0 {\vskip 1.75em \@author \par}\fi%
     }%
     \vskip 1.75em%
 }
